@@ -66,3 +66,30 @@ export const categories: Category = {
     label: "Quote",
   },
 };
+
+// export let notesStatistic: Archive[] = [
+//   {
+//     id: 1,
+//     category: "task",
+//     archived: [],
+//     active: 2,
+//   },
+//   {
+//     id: 2,
+//     category: "randomThought",
+//     archived: [],
+//     active: 1,
+//   },
+//   {
+//     id: 3,
+//     category: "idea",
+//     archived: [],
+//     active: 1,
+//   },
+//   {
+//     id: 4,
+//     category: "quote",
+//     archived: [],
+//     active: 1,
+//   },
+// ];

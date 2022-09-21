@@ -6,6 +6,7 @@ export const NoteCard = styled.div`
   .notes-info-card {
     background-color: #e8eaf5;
     display: flex;
+    align-items: center;
     font-size: 20px;
     padding: 0px 20px;
     height: 60px;

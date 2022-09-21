@@ -1,28 +1,21 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-
 import "./app.css";
 import Header from "./components/molecules/header";
-import ActiveNotesCardContainer from "./components/molecules/active-notes/active-notes";
-import { addNotify } from "./store/notification-slice";
-import { AddNotify } from "./components/molecules/add-notify";
-import ArchivedNotes from "./components/molecules/archived-notes";
+import ActiveNotesCardContainer from "./components/molecules/active-notes";
+import { AddNotify } from "./components/atoms/add-notify";
+import { ArchivedHeader } from "./components/molecules/archived-header";
+import { ArchivedContainer } from "./components/molecules/archived-container";
 
 function App() {
-  const [note, setNote] = useState("");
-  const dispatch = useDispatch();
-
-  const addNewNotify = () => dispatch(addNotify({ note }));
-
   return (
     <div className="App">
       <div>
         <Header />
         <ActiveNotesCardContainer />
-        <AddNotify addNewNotify={addNewNotify} />
+        <AddNotify />
       </div>
       <div>
-        <ArchivedNotes />
+        <ArchivedHeader />
+        <ArchivedContainer />
       </div>
     </div>
   );

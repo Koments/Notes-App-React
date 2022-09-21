@@ -1,7 +1,7 @@
 import { NotesStatistic } from "./styled-components";
 
 
-export default function ArchivedNotes () {
+export function ArchivedHeader () {
     return (
       <NotesStatistic>
         <div className="notes-statistic-header">
