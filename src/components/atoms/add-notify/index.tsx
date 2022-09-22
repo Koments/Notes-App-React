@@ -56,7 +56,7 @@ export function AddNotify() {
 
   return (
     <AddNotifyContainer>
-      <button onClick={toggleModal}>Open modal</button>
+      <button onClick={toggleModal}>Create a new note</button>
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}

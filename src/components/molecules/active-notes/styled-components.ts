@@ -5,7 +5,7 @@ export const NoteCard = styled.div`
 
   .notes-info-card {
     background-color: #e8eaf5;
-    display: flex;
+    display: -webkit-box;
     align-items: center;
     font-size: 20px;
     padding: 0px 20px;
@@ -15,12 +15,8 @@ export const NoteCard = styled.div`
     width: 100%;
   }
 
-  .notes-card-icon {
-    width: 60px;
-  }
-
   .card-icon {
-    width: 50px;
+    width: 42px;
     color: white;
     background: #616161;
     height: 70%;
@@ -31,7 +27,6 @@ export const NoteCard = styled.div`
     margin-right: 10px;
   }
 
-  .card-icon,
   .notes-statistic-icon {
     width: 50px;
     color: white;
@@ -60,7 +55,7 @@ export const NoteCard = styled.div`
 
   .card-name {
     display: flex;
-    width: 275px;
+    width: 230px;
     color: #888a8e;
     height: 100%;
   }
@@ -68,12 +63,12 @@ export const NoteCard = styled.div`
   .card-created,
   .card-category,
   .card-content {
-    width: 200px;
+    width: 168px;
     color: #9899a0;
   }
 
   .card-dates {
-    width: 275px;
+    width: 225px;
     color: #9899a0;
   }
 `;

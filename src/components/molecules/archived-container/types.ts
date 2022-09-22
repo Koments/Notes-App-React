@@ -1,7 +1,9 @@
+import { Note } from "../active-notes/types";
+
 export type Archive = {
-  id: number;
+  id: string;
   category: string;
-  archived: [] | any;
+  archived: Note[];
   active: number;
 };
 

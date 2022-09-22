@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Note } from "../components/molecules/active-notes/types";
 import { Archive } from "../components/molecules/archived-container/types";
 import { notes } from "./data";
+import { State } from "./types";
+import uuid from "react-uuid";
 
 const notifySlice = createSlice({
   name: "notify",
@@ -8,25 +11,25 @@ const notifySlice = createSlice({
     notes: [...notes],
     archivedNotes: [
       {
-        id: 1,
+        id: uuid(),
         category: "task",
         archived: [],
         active: 2,
       },
       {
-        id: 2,
+        id: uuid(),
         category: "randomThought",
         archived: [],
         active: 1,
       },
       {
-        id: 3,
+        id: uuid(),
         category: "idea",
         archived: [],
         active: 1,
       },
       {
-        id: 4,
+        id: uuid(),
         category: "quote",
         archived: [],
         active: 1,
@@ -35,48 +38,56 @@ const notifySlice = createSlice({
   },
   reducers: {
     addNotify(state, action) {
-      state.notes.push({
-        ...action.payload,
-        id: state.notes.length + 1,
-        archived: false,
-      });
-
-      state.archivedNotes.forEach((archivedStatistic: Archive) => {
-        if (action.payload.category === archivedStatistic.category)
-          archivedStatistic.active += 1;
-      });
+      addNote(state, action.payload, "addNotify");
     },
     deleteNotify(state, action) {
-      state.archivedNotes.forEach((archivedStatistic: Archive) => {
-        if (action.payload.category === archivedStatistic.category)
-          archivedStatistic.active -= 1;
-      });
-
-      state.notes = state.notes.filter(
-        (notes) => notes.id !== action.payload.id
-      );
+      deleteNotifyFromStatistic(state, action.payload, "deleteNotify");
     },
     changeNotify(state, action) {},
     archiveNotify(state, action) {
-      state.archivedNotes.forEach((archivedStatistic: Archive) => {
-        if (action.payload.category === archivedStatistic.category) {
-          archivedStatistic.archived = [
-            ...archivedStatistic.archived,
-            action.payload,
-          ];
-
-          archivedStatistic.active -= 1;
-        }
-      });
-
-      state.notes = state.notes.filter(
-        (notes) => notes.id !== action.payload.id
-      );
+      deleteNotifyFromStatistic(state, action.payload, "archived");
+    },
+    unZip(state, action) {
+      addNote(state, action.payload, "unZip");
     },
   },
 });
 
-export const { addNotify, deleteNotify, changeNotify, archiveNotify } =
+export const { addNotify, deleteNotify, changeNotify, archiveNotify, unZip } =
   notifySlice.actions;
 
 export default notifySlice.reducer;
+
+function addNote(state: State, action: Note, nameSetting: string) {
+  state.notes.push({
+    ...action,
+    id: action.id ? action.id : uuid(),
+  });
+
+  state.archivedNotes.forEach((archivedStatistic: Archive) => {
+    if (action.category === archivedStatistic.category)
+      archivedStatistic.active += 1;
+
+    if (nameSetting === "unZip") {
+      archivedStatistic.archived = archivedStatistic.archived.filter(
+        (notes) => notes.id !== action.id
+      );
+    }
+  });
+}
+
+function deleteNotifyFromStatistic(
+  state: State,
+  action: Note,
+  nameSetting: string
+) {
+  state.archivedNotes.forEach((archivedStatistic: Archive) => {
+    if (action.category === archivedStatistic.category) {
+      if (nameSetting === "archived") {
+        archivedStatistic.archived = [...archivedStatistic.archived, action];
+      }
+      archivedStatistic.active -= 1;
+      state.notes = state.notes.filter((notes) => notes.id !== action.id);
+    }
+  });
+}

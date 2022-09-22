@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
 export const AddNotifyContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
 
   .ReactModal__Content {
     position: absolute;

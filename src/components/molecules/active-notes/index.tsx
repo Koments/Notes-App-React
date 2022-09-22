@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { CardInfo } from "../../atoms/card-info";
 
-import NoteIcons from "../../atoms/note-icons";
+import NoteIcons from "../note-icons";
 import { NoteCard } from "./styled-components";
 import { Note, NotesReducer } from "./types";
 import { categories } from "../../../store/data";

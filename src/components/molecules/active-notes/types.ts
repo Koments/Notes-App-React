@@ -1,11 +1,10 @@
 export type Note = {
-  id: number;
+  id: string;
   name: string;
   created: string;
   category: string;
   content: string;
   dates: string;
-  archived: boolean;
 };
 
 export type Notes = {

@@ -1,5 +1,5 @@
 import "./app.css";
-import Header from "./components/molecules/header";
+import Header from "./components/molecules/active-header";
 import ActiveNotesCardContainer from "./components/molecules/active-notes";
 import { AddNotify } from "./components/atoms/add-notify";
 import { ArchivedHeader } from "./components/molecules/archived-header";

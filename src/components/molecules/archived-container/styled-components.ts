@@ -16,6 +16,14 @@ export const ArchivedStatistic = styled.div`
 
   .notes-statistic-icon {
     width: 50px;
+    color: white;
+    background: #616161;
+    height: 70%;
+    display: -webkit-box;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    margin-right: 10px;
   }
 
   .notes-statistic-name {
@@ -28,5 +36,13 @@ export const ArchivedStatistic = styled.div`
 
   .notes-statistic-archived {
     width: 35%;
+  }
+
+  .modal-container {
+    background-color: #7a7a7a;
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 `;
