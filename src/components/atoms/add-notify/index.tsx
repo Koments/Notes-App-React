@@ -29,9 +29,6 @@ export function AddNotify() {
         dates: "",
     };
 
-    let startDate = "";
-    let endDate = "";
-
     const setInfo = (event: any) => {
         if (event.target.id === "new-note-name-input") {
         newNote.name = event.target.value;
@@ -41,18 +38,6 @@ export function AddNotify() {
         }
         if (event.target.id === "new-note-info-input") {
         newNote.content = event.target.value;
-        }
-        if (event.target.id === "start-date") {
-        const str = event.target.value.split("-");
-        startDate = str[2] + "/" + str[1] + "/" + str[0];
-        newNote.dates = event.target.value;
-        } else if (event.target.id === "end-date") {
-        const str = event.target.value.split("-");
-        endDate = str[2] + "/" + str[1] + "/" + str[0];
-        newNote.dates = event.target.value;
-        }
-        if (startDate !== "" && endDate !== "") {
-        newNote.dates = startDate + ", " + endDate;
         }
     };
 
@@ -94,16 +79,6 @@ export function AddNotify() {
                 <input type="text" id="new-note-info-input" onChange={setInfo} />
                 </div>
                 <div className="new-note-date-container">
-                <div>
-                    <label htmlFor="start">Enter start date</label>
-                    <br />
-                    <input type="date" id="start-date" onChange={setInfo} />
-                </div>
-                <div>
-                    <label htmlFor="end">Enter end date</label>
-                    <br />
-                    <input type="date" id="end-date" onChange={setInfo} />
-                </div>
                 </div>
             </div>
             <div className="modal-content-add-note">

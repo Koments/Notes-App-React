@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Modal from "react-modal";
-
 import { deleteNotify, archiveNotify, changeNotify } from "../../../store/notification-slice";
 import { Note } from "../active-notes/types";
 import { NotesImages } from "./styled-components";

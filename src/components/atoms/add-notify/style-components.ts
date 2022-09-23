@@ -23,7 +23,7 @@ export const ModalContentStyle = styled.div`
     flex-direction: column;
     margin: 0 auto;
     width: 440px;
-    height: 640px;
+    height: 440px;
     padding: 5px 20px;
     background-color: #7a7a7a;
     color: white;

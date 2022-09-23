@@ -38,27 +38,24 @@ const notifySlice = createSlice({
     },
     reducers: {
         addNotify(state, action) {
-        addNote(state, action.payload, "addNotify");
+            addNote(state, action.payload, "addNotify");
         },
         
         deleteNotify(state, action) {
-        deleteNotifyFromStatistic(state, action.payload, "deleteNotify");
+            deleteNotifyFromStatistic(state, action.payload, "deleteNotify");
         },
 
         changeNotify(state, action) {
-        state.notes.forEach((note: Note) => {
-            if (note.id === action.payload.id) {
-            note = action.payload;
-            }
-        });
+            const index = state.notes.findIndex((note) => note.id === action.payload.id);
+            state.notes[index] = action.payload
         },
 
         archiveNotify(state, action) {
-        deleteNotifyFromStatistic(state, action.payload, "archived");
+            deleteNotifyFromStatistic(state, action.payload, "archived");
         },
 
         unZip(state, action) {
-        addNote(state, action.payload, "unZip");
+            addNote(state, action.payload, "unZip");
         },
     },
 });
