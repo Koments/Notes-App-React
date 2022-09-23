@@ -1,0 +1,14 @@
+.App {
+  width: 1200px;
+  margin: 0 auto
+}
+
+h2 {
+  text-align: center;
+}
+
+.card-name, .card-dates, .card-created, .card-category, .card-content, .statistic-card-name, .statistic-card-created, .statistic-card-content, .statistic-card-dates {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
