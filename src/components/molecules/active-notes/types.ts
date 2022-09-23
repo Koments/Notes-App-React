@@ -1,23 +1,23 @@
 export type Note = {
-  id: string;
-  name: string;
-  created: string;
-  category: string;
-  content: string;
-  dates: string;
+    id: string;
+    name: string;
+    created: string;
+    category: string;
+    content: string;
+    dates: string;
 };
 
 export type Notes = {
-  notes: Note[];
+    notes: Note[];
 };
 
 export type NotesReducer = {
-  notes: Notes;
+    notes: Notes;
 };
 
 export type Category = {
-  [x: string]: {
-    icon: string;
-    label: string;
-  };
+    [x: string]: {
+        icon: string;
+        label: string;
+    };
 };

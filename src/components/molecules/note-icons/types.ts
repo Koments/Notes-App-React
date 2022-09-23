@@ -1,4 +1,4 @@
 export type SelectedOption = {
-  id: number;
-  category: string;
+    id: number;
+    category: string;
 };

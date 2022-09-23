@@ -6,84 +6,83 @@ import { State } from "./types";
 import uuid from "react-uuid";
 
 const notifySlice = createSlice({
-  name: "notify",
-  initialState: {
-    notes: [...notes],
-    archivedNotes: [
-      {
-        id: uuid(),
-        category: "task",
-        archived: [],
-        active: 2,
-      },
-      {
-        id: uuid(),
-        category: "randomThought",
-        archived: [],
-        active: 1,
-      },
-      {
-        id: uuid(),
-        category: "idea",
-        archived: [],
-        active: 1,
-      },
-      {
-        id: uuid(),
-        category: "quote",
-        archived: [],
-        active: 1,
-      },
-    ],
-  },
-  reducers: {
-    addNotify(state, action) {
-      addNote(state, action.payload, "addNotify");
+    name: "notify",
+    initialState: {
+        notes: [...notes],
+        archivedNotes: [
+        {
+            id: uuid(),
+            category: "task",
+            archived: [],
+            active: 2,
+        },
+        {
+            id: uuid(),
+            category: "randomThought",
+            archived: [],
+            active: 1,
+        },
+        {
+            id: uuid(),
+            category: "idea",
+            archived: [],
+            active: 1,
+        },
+        {
+            id: uuid(),
+            category: "quote",
+            archived: [],
+            active: 1,
+        },
+        ],
     },
-    
-    deleteNotify(state, action) {
-      deleteNotifyFromStatistic(state, action.payload, "deleteNotify");
-    },
+    reducers: {
+        addNotify(state, action) {
+        addNote(state, action.payload, "addNotify");
+        },
+        
+        deleteNotify(state, action) {
+        deleteNotifyFromStatistic(state, action.payload, "deleteNotify");
+        },
 
-    changeNotify(state, action) {
-      state.notes.forEach((note: Note) => {
-        if (note.id === action.payload.id) {
-          note = action.payload;
-        }
-      });
-    },
+        changeNotify(state, action) {
+        state.notes.forEach((note: Note) => {
+            if (note.id === action.payload.id) {
+            note = action.payload;
+            }
+        });
+        },
 
-    archiveNotify(state, action) {
-      deleteNotifyFromStatistic(state, action.payload, "archived");
-    },
+        archiveNotify(state, action) {
+        deleteNotifyFromStatistic(state, action.payload, "archived");
+        },
 
-    unZip(state, action) {
-      addNote(state, action.payload, "unZip");
+        unZip(state, action) {
+        addNote(state, action.payload, "unZip");
+        },
     },
-  },
 });
 
-export const { addNotify, deleteNotify, changeNotify, archiveNotify, unZip } =
-  notifySlice.actions;
+export const { addNotify, deleteNotify, changeNotify, archiveNotify, unZip } = notifySlice.actions;
 
 export default notifySlice.reducer;
 
 function addNote(state: State, action: Note, nameSetting: string) {
-  state.notes.push({
-    ...action,
-    id: action.id ? action.id : uuid(),
-  });
+    state.notes.push({
+        ...action,
+        id: action.id ? action.id : uuid(),
+    });
 
-  state.archivedNotes.forEach((archivedStatistic: Archive) => {
-    if (action.category === archivedStatistic.category)
-      archivedStatistic.active += 1;
+    state.archivedNotes.forEach((archivedStatistic: Archive) => {
+        if (action.category === archivedStatistic.category)
+        archivedStatistic.active += 1;
 
-    if (nameSetting === "unZip") {
-      archivedStatistic.archived = archivedStatistic.archived.filter(
-        (notes) => notes.id !== action.id
-      );
-    }
-  });
+        if (nameSetting === "unZip") {
+        archivedStatistic.archived = archivedStatistic.archived.filter(
+            (notes) => notes.id !== action.id
+        );
+        }
+    });
 }
 
 function deleteNotifyFromStatistic(
@@ -91,13 +90,13 @@ function deleteNotifyFromStatistic(
   action: Note,
   nameSetting: string
 ) {
-  state.archivedNotes.forEach((archivedStatistic: Archive) => {
-    if (action.category === archivedStatistic.category) {
-      if (nameSetting === "archived")
-        archivedStatistic.archived = [...archivedStatistic.archived, action];
+    state.archivedNotes.forEach((archivedStatistic: Archive) => {
+        if (action.category === archivedStatistic.category) {
+        if (nameSetting === "archived")
+            archivedStatistic.archived = [...archivedStatistic.archived, action];
 
-      archivedStatistic.active -= 1;
-      state.notes = state.notes.filter((notes) => notes.id !== action.id);
-    }
-  });
+        archivedStatistic.active -= 1;
+        state.notes = state.notes.filter((notes) => notes.id !== action.id);
+        }
+    });
 }

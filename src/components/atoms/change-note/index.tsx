@@ -11,9 +11,10 @@ interface CardInfoProps {
     dates: string;
   };
   changeNotify: (note: Note) => void;
+  onRequestClose: () => void;
 }
 
-export default function ChangeNote({ note, changeNotify}: CardInfoProps) {
+export default function ChangeNote({ note, changeNotify, onRequestClose }: CardInfoProps) {
   const today = new Date();
 
   let newNote = {
@@ -95,7 +96,7 @@ export default function ChangeNote({ note, changeNotify}: CardInfoProps) {
       <div className="modal-content-add-note">
         <button
           className="modal-content-add-note-btn"
-          onClick={() => changeNotify(newNote)}
+          onClick={() => onRequestClose()}
         >
           Close
         </button>
